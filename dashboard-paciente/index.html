@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Paciente - VidaPlus</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>VidaPlus <span class="highlight">+</span></h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#" class="active"><span class="material-icons">dashboard</span> Início</a></li>
+                    <li><a href="agendamento.html"><span class="material-icons">event</span> Agendar Consulta</a></li>
+                    <li><a href="telemedicina.html"><span class="material-icons">video_camera_front</span> Telemedicina</a></li>
+                    <li><a href="historico.html"><span class="material-icons">history</span> Histórico</a></li>
+                    <li><a href="meu-perfil.html"><span class="material-icons">person</span> Meu Perfil</a></li>
+                    <li class="logout-item"><a href="../index.html"><span class="material-icons">logout</span> Sair</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="welcome-text">
+                    <h1>Olá, <span id="userName">João Silva</span></h1>
+                    <p>Bem-vindo ao seu portal de saúde.</p>
+                </div>
+                <div class="user-avatar">
+                    <span class="material-icons">account_circle</span>
+                </div>
+            </header>
+
+            <section class="stats-grid">
+                <div class="card highlight-card">
+                    <h3>Próxima Consulta</h3>
+                    <div class="card-content">
+                        <p class="date">28 Out, 14:30</p>
+                        <p class="doctor">Dr.ª Ana Sousa</p>
+                        <p class="specialty">Cardiologia</p>
+                        <button class="btn-small">Ver Detalhes</button>
+                    </div>
+                </div>
+
+                <div class="card telemed-card">
+                    <h3>Telemedicina</h3>
+                    <p>Tem uma consulta online hoje?</p>
+                    <button class="btn-primary" onclick="window.location.href='telemedicina.html'">
+                        Aceder à Sala de Espera
+                    </button>
+                </div>
+
+                <div class="card">
+                    <h3>Últimos Exames</h3>
+                    <ul class="exam-list">
+                        <li>Hemograma Completo <span class="status ready">Pronto</span></li>
+                        <li>Raio-X Tórax <span class="status processing">Em análise</span></li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../assets/js/dashboard.js"></script>
+</body>
+</html>

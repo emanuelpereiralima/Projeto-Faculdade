@@ -1,0 +1,412 @@
+/* --- Reset e Variáveis Globais --- */
+:root {
+    --primary-color: #0056b3; /* Azul Institucional */
+    --primary-hover: #004494;
+    --accent-color: #00c4cc; /* Detalhes em Ciano */
+    --bg-color: #f4f7f6;
+    --text-color: #333;
+    --text-light: #666;
+    --white: #ffffff;
+    --border-radius: 8px;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.hidden {
+    display: none !important;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-center-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+/* --- Container de Login --- */
+.login-container {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.login-card {
+    background-color: var(--white);
+    padding: 40px;
+    width: 100%;
+    max-width: 400px; /* Limita largura em telas grandes */
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+/* --- Header --- */
+.login-header {
+    margin-bottom: 30px;
+}
+
+.logo {
+    font-size: 2rem;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.highlight {
+    color: var(--accent-color);
+}
+
+.login-header p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* --- Formulário --- */
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+/* --- Ações e Botões --- */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.forgot-password {
+    font-size: 0.85rem;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+/* --- Footer --- */
+.login-footer {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.login-footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* --- Popup de Credenciais de Teste --- */
+.credentials-popup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 250px;
+    background-color: #fff;
+    border-left: 5px solid var(--accent-color); /* Ciano */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-radius: 4px;
+    padding: 15px;
+    font-size: 0.9rem;
+    z-index: 1000;
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.close-popup {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #999;
+}
+
+.close-popup:hover {
+    color: #333;
+}
+
+.credential-item {
+    margin: 8px 0;
+    line-height: 1.4;
+    color: #555;
+}
+
+.popup-content hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 8px 0;
+}
+
+data-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Centraliza verticalmente */
+    margin-bottom: 5px;
+    color: #555;
+}
+
+/* Agrupa o texto do valor e o botão */
+.value-group {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espaço entre o texto e o botão */
+}
+
+/* Estilo do Botão de Copiar */
+.btn-copy {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #999;
+    padding: 4px;
+    border-radius: 4px;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-copy:hover {
+    background-color: #e2e6ea;
+    color: var(--primary-color);
+}
+
+.btn-copy:active {
+    transform: scale(0.95);
+}
+
+/* Classe utilitária para quando copia (JavaScript vai adicionar) */
+.btn-copy.copied {
+    color: #28a745; /* Verde Sucesso */
+}
+
+@media (max-width: 768px) {
+    /* Transforma o Grid de 2 colunas em 1 coluna só */
+    .dashboard-container {
+        grid-template-columns: 1fr;
+        height: auto; /* Permite rolagem infinita no mobile */
+    }
+
+    /* Ajusta a Sidebar para mobile (fica no topo ou escondida) */
+    .sidebar {
+        display: none; /* Esconde menu lateral no mobile para simplificar */
+        /* Num projeto real, usaríamos um botão "hambúrguer" para abrir */
+    }
+
+    /* Ajusta o padding do conteúdo */
+    .main-content {
+        padding: 15px;
+        height: auto;
+    }
+
+    /* Ajusta os textos grandes */
+    .top-bar h1 {
+        font-size: 1.5rem;
+    }
+
+    /* Ajusta o Wizard (Passo a Passo) */
+    .wizard-container {
+        padding: 15px;
+    }
+    
+    .progress-bar .step {
+        font-size: 0.75rem; /* Texto menor na barra de progresso */
+        padding: 0 5px;
+    }
+    
+    .datetime-inputs {
+        flex-direction: column; /* Data e hora um embaixo do outro */
+    }
+    
+    .options-grid {
+        grid-template-columns: 1fr 1fr; /* 2 colunas em vez de 4 */
+    }
+}
+
+/* --- Melhoria na Seleção de Data e Hora --- */
+
+.datetime-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.section-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+/* Estilo do Input de Data */
+.styled-date-input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    width: 100%;
+    max-width: 300px;
+    color: #555;
+    outline: none;
+    transition: border 0.3s;
+}
+
+.styled-date-input:focus {
+    border-color: var(--primary-color);
+}
+
+/* Grupos de Período (Manhã/Tarde) */
+.period-group {
+    margin-bottom: 20px;
+}
+
+.period-label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.period-label .material-icons {
+    font-size: 1.1rem;
+    color: orange; /* Solzinho laranja */
+}
+
+/* Grid de Horários */
+.slots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); /* Responsivo automático */
+    gap: 12px;
+}
+
+/* O Botão de Horário (Time Slot) */
+.time-slot {
+    position: relative;
+    cursor: pointer;
+}
+
+/* Esconde o Input Radio original */
+.time-slot input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* O visual do botão (o span) */
+.time-slot span {
+    display: block;
+    padding: 10px 0;
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    color: #555;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+/* Efeito Hover (passar o mouse) */
+.time-slot:hover span {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    background-color: #f0f8ff;
+}
+
+/* ESTADO SELECIONADO (Quando clica) */
+.time-slot input[type="radio"]:checked + span {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    box-shadow: 0 2px 5px rgba(0, 86, 179, 0.3);
+    transform: translateY(-1px);
+}
+
+/* ESTADO DESABILITADO (Horário Ocupado) */
+.time-slot.disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.time-slot.disabled input {
+    pointer-events: none;
+}
+
+.time-slot.disabled span {
+    background-color: #f9f9f9;
+    color: #ccc;
+    border-color: #eee;
+    text-decoration: line-through; /* Risco no texto */
+}
+
+.time-slot.disabled:hover span {
+    border-color: #eee;
+    color: #ccc;
+    background-color: #f9f9f9;
+}

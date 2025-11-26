@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telemedicina - VidaPlus</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>VidaPlus <span class="highlight">+</span></h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="index.html"><span class="material-icons">dashboard</span> Início</a></li>
+                    <li><a href="agendamento.html"><span class="material-icons">event</span> Agendar Consulta</a></li>
+                    <li><a href="telemedicina.html" class="active"><span class="material-icons">video_camera_front</span> Telemedicina</a></li>
+                    <li><a href="historico.html"><span class="material-icons">history</span> Histórico</a></li>
+                    <li><a href="meu-perfil.html"><span class="material-icons">person</span> Meu Perfil</a></li>
+                    <li class="logout-item"><a href="../index.html"><span class="material-icons">logout</span> Sair</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content telemed-content">
+            
+            <section id="lobby-screen" class="lobby-container">
+                <div class="lobby-card">
+                    <div class="icon-pulse">
+                        <span class="material-icons">medical_services</span>
+                    </div>
+                    <h2>Sala de Espera Virtual</h2>
+                    <p>A sua consulta com <strong>Dr.ª Ana Sousa</strong> está agendada para agora.</p>
+                    
+                    <div class="device-check">
+                        <div class="check-item ready">
+                            <span class="material-icons">mic</span> Microfone detetado
+                        </div>
+                        <div class="check-item ready">
+                            <span class="material-icons">videocam</span> Câmara pronta
+                        </div>
+                        <div class="check-item ready">
+                            <span class="material-icons">verified_user</span> Conexão segura (SSL)
+                        </div>
+                    </div>
+
+                    <button class="btn-primary btn-lg" onclick="startConsultation()">
+                        <span class="material-icons">login</span> Entrar na Consulta
+                    </button>
+                    <p class="privacy-note"><small>Esta chamada é criptografada de ponta a ponta.</small></p>
+                </div>
+            </section>
+
+            <section id="video-room" class="video-room hidden">
+                
+                <div class="video-grid">
+                    <div class="main-video-container">
+                        <img src="https://img.freepik.com/fotos-gratis/medico-oferecendo-uma-consulta-medica-virtual_23-2149365516.jpg" alt="Dr Ana Sousa" class="doctor-video">
+                        
+                        <div class="participant-label">
+                            <span class="status-dot"></span> Dr.ª Ana Sousa (Cardiologia)
+                        </div>
+
+                        <div class="self-video-container">
+                            <video id="localVideo" autoplay muted playsinline></video>
+                            <span class="me-label">Eu</span>
+                        </div>
+                    </div>
+
+                    <div class="chat-sidebar">
+                        <div class="chat-header">
+                            <h4>Bate-papo</h4>
+                        </div>
+                        <div class="chat-messages" id="chatMessages">
+                            <div class="msg received">
+                                <p>Olá, João. Conseguem ouvir-me bem?</p>
+                                <span class="time">14:30</span>
+                            </div>
+                        </div>
+                        <div class="chat-input-area">
+                            <input type="text" id="chatInput" placeholder="Digite uma mensagem...">
+                            <button onclick="sendMessage()"><span class="material-icons">send</span></button>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="call-controls">
+                    <button class="control-btn" id="btnMic" onclick="toggleMic()" title="Silenciar">
+                        <span class="material-icons">mic</span>
+                    </button>
+                    <button class="control-btn" id="btnCam" onclick="toggleCam()" title="Parar Vídeo">
+                        <span class="material-icons">videocam</span>
+                    </button>
+                    <button class="control-btn end-call" onclick="endCall()" title="Encerrar">
+                        <span class="material-icons">call_end</span>
+                    </button>
+                </footer>
+
+            </section>
+
+        </main>
+    </div>
+
+    <script src="../assets/js/telemedicina.js"></script>
+</body>
+</html>

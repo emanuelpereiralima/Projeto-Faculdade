@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico Clínico - VidaPlus</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h2>VidaPlus <span class="highlight">+</span></h2>
+                </a>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="index.html"><span class="material-icons">dashboard</span> Início</a></li>
+                    <li><a href="agendamento.html"><span class="material-icons">event</span> Agendar Consulta</a></li>
+                    <li><a href="telemedicina.html"><span class="material-icons">video_camera_front</span> Telemedicina</a></li>
+                    <li><a href="#" class="active"><span class="material-icons">history</span> Histórico</a></li> <li><a href="meu-perfil.html"><span class="material-icons">person</span> O Meu Perfil</a></li>
+                    <li class="logout-item"><a href="../index.html"><span class="material-icons">logout</span> Sair</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="page-title">
+                    <h1>Histórico Clínico</h1>
+                    <p>Consulte seus atendimentos anteriores e resultados de exames.</p>
+                </div>
+            </header>
+
+            <section class="history-container">
+                
+                <div class="toolbar">
+                    <div class="search-box">
+                        <span class="material-icons">search</span>
+                        <input type="text" id="searchInput" placeholder="Pesquisar por médico, especialidade ou exame...">
+                    </div>
+                </div>
+
+                <div class="tabs-header">
+                    <button class="tab-btn active" onclick="openTab('consultas')">
+                        <span class="material-icons">medical_services</span> Consultas
+                    </button>
+                    <button class="tab-btn" onclick="openTab('exames')">
+                        <span class="material-icons">description</span> Exames
+                    </button>
+                </div>
+
+                <div id="consultas" class="tab-content active">
+                    <div class="history-list" id="consultasList">
+                        
+                        <div class="history-card">
+                            <div class="date-box">
+                                <span class="day">15</span>
+                                <span class="month">OUT</span>
+                                <span class="year">2023</span>
+                            </div>
+                            <div class="info-box">
+                                <h3>Cardiologia</h3>
+                                <p>Dr.ª Ana Sousa • Presencial</p>
+                            </div>
+                            <div class="status-box">
+                                <span class="status-badge completed">Realizada</span>
+                                <button class="btn-text" onclick="openDetails('Cardiologia', 'Dr.ª Ana Sousa', 'Paciente relata leve taquicardia. Realizado ECG normal.', 'Atenolol 25mg - 1x ao dia', 'Retorno em 6 meses.')">
+                                    Ver Detalhes
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="history-card">
+                            <div class="date-box">
+                                <span class="day">02</span>
+                                <span class="month">SET</span>
+                                <span class="year">2023</span>
+                            </div>
+                            <div class="info-box">
+                                <h3>Clínica Geral</h3>
+                                <p>Dr. Carlos Lima • Telemedicina</p>
+                            </div>
+                            <div class="status-box">
+                                <span class="status-badge completed">Realizada</span>
+                                <button class="btn-text" onclick="openDetails('Clínica Geral', 'Dr. Carlos Lima', 'Check-up de rotina. Pressão arterial 12/8.', 'Nenhuma medicação prescrita.', 'Manter dieta equilibrada e exercícios.')">
+                                    Ver Detalhes
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="history-card">
+                            <div class="date-box disabled">
+                                <span class="day">20</span>
+                                <span class="month">AGO</span>
+                                <span class="year">2023</span>
+                            </div>
+                            <div class="info-box">
+                                <h3>Dermatologia</h3>
+                                <p>Dr.ª Fernanda • Presencial</p>
+                            </div>
+                            <div class="status-box">
+                                <span class="status-badge cancelled">Cancelada</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="exames" class="tab-content">
+                    <div class="history-list" id="examesList">
+                        
+                        <div class="history-card">
+                            <div class="icon-box">
+                                <span class="material-icons">science</span>
+                            </div>
+                            <div class="info-box">
+                                <h3>Hemograma Completo</h3>
+                                <p>Laboratório Central • Realizado em 14/10/2023</p>
+                            </div>
+                            <div class="action-box">
+                                <button class="btn-download" onclick="downloadFile('Hemograma.pdf')">
+                                    <span class="material-icons">download</span> Resultado
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="history-card">
+                            <div class="icon-box">
+                                <span class="material-icons">image</span>
+                            </div>
+                            <div class="info-box">
+                                <h3>Raio-X Tórax</h3>
+                                <p>Unidade Imagem • Realizado em 15/10/2023</p>
+                            </div>
+                            <div class="action-box">
+                                <span class="status-badge processing">Em Análise</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <div id="detailsModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <header class="modal-header">
+                <h3 id="modalTitle">Detalhes da Consulta</h3>
+                <span class="close-modal" onclick="closeDetails()">&times;</span>
+            </header>
+            
+            <div class="modal-body">
+                <div class="detail-group">
+                    <strong>Profissional:</strong>
+                    <p id="modalDoctor">Dr. Fulano</p>
+                </div>
+                
+                <hr class="divider">
+
+                <div class="detail-group">
+                    <strong>📝 Diagnóstico / Observações:</strong>
+                    <p id="modalDiagnosis" class="text-content">Texto de teste...</p>
+                </div>
+
+                <div class="detail-group highlight-box">
+                    <strong>💊 Prescrição (Receita):</strong>
+                    <p id="modalPrescription">Texto de teste...</p>
+                </div>
+
+                <div class="detail-group">
+                    <strong>📌 Recomendações:</strong>
+                    <p id="modalNotes">Texto de teste...</p>
+                </div>
+            </div>
+
+            <footer class="modal-footer">
+                <button class="btn-secondary" onclick="window.print()">Imprimir</button>
+                <button class="btn-primary" onclick="closeDetails()">Fechar</button>
+            </footer>
+        </div>
+    </div>
+
+    <script src="../assets/js/history.js"></script>
+</body>
+</html>

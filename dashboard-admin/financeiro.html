@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financeiro - Admin VidaPlus</title>
+    
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/admin.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar admin-theme">
+            <div class="sidebar-header">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h2>VidaPlus <span class="highlight" style="color: #e74c3c;">Admin</span></h2>
+                </a>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="index.html"><span class="material-icons">analytics</span> Dashboard</a></li>
+                    <li><a href="profissionais.html"><span class="material-icons">medication_liquid</span> Profissionais</a></li>
+                    <li><a href="pacientes-admin.html"><span class="material-icons">groups</span> Pacientes</a></li>
+                    <li><a href="financeiro.html" class="active"><span class="material-icons">attach_money</span> Financeiro</a></li>
+                    <li class="logout-item"><a href="../index.html"><span class="material-icons">logout</span> Sair</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="page-title">
+                    <h1>Gestão Financeira</h1>
+                    <p>Controle de fluxo de caixa, faturamento e despesas.</p>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button class="btn-secondary">
+                        <span class="material-icons" style="font-size: 1rem; vertical-align: middle;">file_download</span> Relatório
+                    </button>
+                    <button class="btn-primary" onclick="openFinanceModal()">
+                        <span class="material-icons" style="font-size: 1rem; vertical-align: middle; margin-right: 5px;">add</span>
+                        Novo Lançamento
+                    </button>
+                </div>
+            </header>
+
+            <section class="kpi-grid">
+                <div class="kpi-card green">
+                    <div class="kpi-info">
+                        <h3>R$ 125k</h3>
+                        <p>Receita Mensal</p>
+                    </div>
+                    <span class="material-icons kpi-icon" style="color: #27ae60;">trending_up</span>
+                </div>
+
+                <div class="kpi-card red">
+                    <div class="kpi-info">
+                        <h3>R$ 42k</h3>
+                        <p>Despesas</p>
+                    </div>
+                    <span class="material-icons kpi-icon" style="color: #c0392b;">trending_down</span>
+                </div>
+
+                <div class="kpi-card blue">
+                    <div class="kpi-info">
+                        <h3>R$ 83k</h3>
+                        <p>Lucro Líquido</p>
+                    </div>
+                    <span class="material-icons kpi-icon" style="color: #2980b9;">savings</span>
+                </div>
+
+                <div class="kpi-card orange">
+                    <div class="kpi-info">
+                        <h3>R$ 15k</h3>
+                        <p>A Receber (Convênios)</p>
+                    </div>
+                    <span class="material-icons kpi-icon" style="color: #f39c12;">pending_actions</span>
+                </div>
+            </section>
+
+            <div style="display: grid; grid-template-columns: 1fr 350px; gap: 20px;">
+                
+                <div class="card" style="padding: 0; overflow: hidden;">
+                    <div class="flex-between" style="padding: 20px; border-bottom: 1px solid #eee;">
+                        <h3 style="margin: 0; border: none;">Transações Recentes</h3>
+                        <input type="text" class="search-input-admin" placeholder="Filtrar lançamentos..." style="width: 200px;">
+                    </div>
+                    
+                    <table class="data-table" id="financeTable">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Descrição</th>
+                                <th>Categoria</th>
+                                <th>Valor</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Hoje</td>
+                                <td>Consulta Particular - Maria O.</td>
+                                <td>Receita Médica</td>
+                                <td class="money-plus">+ R$ 350,00</td>
+                                <td><span class="status-indicator active">Pago</span></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Ontem</td>
+                                <td>Compra de Insumos (Luvas/Seringas)</td>
+                                <td>Material Hospitalar</td>
+                                <td class="money-minus">- R$ 1.200,00</td>
+                                <td><span class="status-indicator active">Pago</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>20/11</td>
+                                <td>Repasse Unimed (Lote #4492)</td>
+                                <td>Convênios</td>
+                                <td class="money-neutral">R$ 15.400,00</td>
+                                <td><span class="status-indicator inactive">Pendente</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card">
+                    <h3 style="margin-bottom: 20px;">Balanço Semestral</h3>
+                    
+                    <div class="chart-container finance-chart">
+                        <div class="bar-group">
+                            <div class="bar income" style="height: 40%;" title="Receita"></div>
+                            <div class="bar expense" style="height: 20%;" title="Despesa"></div>
+                            <div class="bar-label">Jun</div>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar income" style="height: 50%;"></div>
+                            <div class="bar expense" style="height: 35%;"></div>
+                            <div class="bar-label">Jul</div>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar income" style="height: 45%;"></div>
+                            <div class="bar expense" style="height: 30%;"></div>
+                            <div class="bar-label">Ago</div>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar income" style="height: 70%;"></div>
+                            <div class="bar expense" style="height: 40%;"></div>
+                            <div class="bar-label">Set</div>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar income" style="height: 80%;"></div>
+                            <div class="bar expense" style="height: 50%;"></div>
+                            <div class="bar-label">Out</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 20px; display: flex; justify-content: center; gap: 20px; font-size: 0.85rem;">
+                        <span style="display: flex; align-items: center; gap: 5px;"><div style="width: 10px; height: 10px; background: #27ae60;"></div> Receita</span>
+                        <span style="display: flex; align-items: center; gap: 5px;"><div style="width: 10px; height: 10px; background: #c0392b;"></div> Despesa</span>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <div id="financeModal" class="modal-overlay hidden">
+        <div class="modal-content" style="max-width: 500px;">
+            <header class="modal-header" style="background: #2c3e50;">
+                <h3>Novo Lançamento</h3>
+                <span class="close-modal" onclick="closeFinanceModal()">&times;</span>
+            </header>
+            
+            <form id="financeForm">
+                <div class="modal-body">
+                    <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                        <div>
+                            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Tipo</label>
+                            <select id="finType" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
+                                <option value="income">Receita (+)</option>
+                                <option value="expense">Despesa (-)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Valor (R$)</label>
+                            <input type="text" id="finAmount" required placeholder="0,00">
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 15px;">
+                        <label style="font-weight: bold; display: block; margin-bottom: 5px;">Descrição</label>
+                        <input type="text" id="finDesc" required placeholder="Ex: Pagamento Fornecedor X">
+                    </div>
+
+                    <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div>
+                            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Categoria</label>
+                            <select id="finCat" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
+                                <option>Consultas</option>
+                                <option>Exames</option>
+                                <option>Salários</option>
+                                <option>Manutenção</option>
+                                <option>Insumos</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Data</label>
+                            <input type="date" id="finDate" required>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="modal-footer">
+                    <button type="button" class="btn-secondary" onclick="closeFinanceModal()">Cancelar</button>
+                    <button type="submit" class="btn-primary">Salvar</button>
+                </footer>
+            </form>
+        </div>
+    </div>
+
+    <script src="../assets/js/admin-financeiro.js"></script>
+</body>
+</html>

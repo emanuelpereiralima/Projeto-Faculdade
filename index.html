@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso - VidaPlus SGHSS</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="flex-center-screen">
+
+    <main class="login-container">
+        <section class="login-card">
+            
+            <header class="login-header">
+                <h1 class="logo">VidaPlus <span class="highlight">+</span></h1>
+                <p id="header-description">Sistema de Gestão Hospitalar</p>
+            </header>
+
+            <div id="login-container">
+                <form id="loginForm" class="login-form">
+                    <div class="input-group">
+                        <label for="email">E-mail ou Usuário</label>
+                        <input type="email" id="email" name="email" placeholder="ex: doutor@vidaplus.com" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="password">Senha</label>
+                        <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+                    </div>
+
+                    <div class="form-actions">
+                    <a href="#" id="btn-forgot-password" class="forgot-password">Esqueci minha senha</a>                    
+                    </div>
+                    <button type="submit" class="btn-primary">Entrar</button>
+                </form>
+                
+                <footer class="login-footer">
+                    <p>Ainda não tem acesso? <a href="#">Contate o administrador</a></p>
+                </footer>
+            </div>
+
+            <div id="recovery-container" class="hidden">
+                <form id="recoveryForm" class="login-form">
+                    <div class="input-group">
+                        <label for="recoveryEmail">Confirme seu E-mail</label>
+                        <input type="email" id="recoveryEmail" name="recoveryEmail" placeholder="ex: doutor@vidaplus.com">
+                    </div>
+
+                    <button type="submit" class="btn-primary" id="btnSendRecovery">Enviar Link de Recuperação</button>
+                </form>
+
+                <footer class="login-footer">
+                    <p>Lembrou a senha? <a href="#" id="btn-back-login">Voltar para o Login</a></p>
+                </footer>
+            </div>
+
+        </section>
+    </main>
+
+    <div id="test-credentials" class="credentials-popup">
+        <div class="popup-header">
+            <h4>🧪 Dados de Teste</h4>
+            <span class="close-popup" onclick="document.getElementById('test-credentials').style.display='none'">&times;</span>
+        </div>
+        
+        <div class="popup-content">
+            <p class="popup-note"><small>Use os botões para copiar</small></p>
+            
+            <div class="credential-box">
+                <strong class="role-title">👤 Paciente</strong>
+                
+                <div class="data-row">
+                    <span class="data-label">E-mail:</span>
+                    <div class="value-group">
+                        <span>paciente@vidaplus.com</span>
+                        <button class="btn-copy" data-value="paciente@vidaplus.com" title="Copiar E-mail">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="data-row">
+                    <span class="data-label">Senha:</span>
+                    <div class="value-group">
+                        <span>123456</span>
+                        <button class="btn-copy" data-value="123456" title="Copiar Senha">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="credential-box">
+                <strong class="role-title">🩺 Médico</strong>
+                
+                <div class="data-row">
+                    <span class="data-label">E-mail:</span>
+                    <div class="value-group">
+                        <span>medico@vidaplus.com</span>
+                        <button class="btn-copy" data-value="medico@vidaplus.com" title="Copiar E-mail">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="data-row">
+                    <span class="data-label">Senha:</span>
+                    <div class="value-group">
+                        <span>123456</span>
+                        <button class="btn-copy" data-value="123456" title="Copiar Senha">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="credential-box" style="border-left: 4px solid #e74c3c;"> <strong class="role-title" style="color: #c0392b;">🛡️ Administrador</strong>
+                
+                <div class="data-row">
+                    <span class="data-label">E-mail:</span>
+                    <div class="value-group">
+                        <span>admin@vidaplus.com</span>
+                        <button class="btn-copy" data-value="admin@vidaplus.com" title="Copiar E-mail">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="data-row">
+                    <span class="data-label">Senha:</span>
+                    <div class="value-group">
+                        <span>admin123</span>
+                        <button class="btn-copy" data-value="admin123" title="Copiar Senha">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

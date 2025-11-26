@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Pacientes - VidaPlus</title>
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/doctor.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar doctor-theme">
+            <div class="sidebar-header">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h2>VidaPlus <span class="highlight">Pro</span></h2>
+                </a>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="index.html"><span class="material-icons">dashboard</span> Visão Geral</a></li>
+                    <li><a href="agenda.html"><span class="material-icons">calendar_today</span> Minha Agenda</a></li>
+                    <li><a href="#" class="active"><span class="material-icons">people</span> Meus Pacientes</a></li>
+                    <li><a href="prontuario.html"><span class="material-icons">assignment</span> Prontuário (PEP)</a></li>
+                    <li class="logout-item"><a href="../index.html"><span class="material-icons">logout</span> Sair</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            
+            <header class="top-bar">
+                <div class="page-title">
+                    <h1>Meus Pacientes</h1>
+                    <p>Gerencie sua base de pacientes e acesse históricos.</p>
+                </div>
+                <button class="btn-primary" onclick="openNewPatientModal()">
+                    <span class="material-icons">person_add</span> Novo Paciente
+                </button>
+            </header>
+
+            <div class="card" style="margin-bottom: 20px; padding: 15px;">
+                <div class="flex-between">
+                    <div class="search-box" style="background: white; border: 1px solid #ddd; width: 300px;">
+                        <span class="material-icons">search</span>
+                        <input type="text" id="searchInput" placeholder="Buscar por nome ou CPF...">
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <select style="width: auto;">
+                            <option>Todos os Convênios</option>
+                            <option>Particular</option>
+                            <option>Unimed</option>
+                        </select>
+                        <button class="btn-secondary">Filtrar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="padding: 0; overflow: hidden;">
+                <table class="med-table" id="patientsTable" style="width: 100%;">
+                    <thead style="background: #f8f9fa;">
+                        <tr>
+                            <th style="padding: 15px 20px;">Paciente</th>
+                            <th>Contato</th>
+                            <th>Convênio</th>
+                            <th>Status</th>
+                            <th style="text-align: right; padding-right: 20px;">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr style="border-bottom: 1px solid #eee;">
+                            <td style="padding: 15px 20px;">
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <div class="avatar-mini">MO</div>
+                                    <div>
+                                        <strong>Maria Oliveira</strong>
+                                        <small style="display: block; color: #888;">CPF: 123.456.789-00</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>(11) 99999-1111</td>
+                            <td>Particular</td>
+                            <td><span class="status-badge processing">Ativo</span></td>
+                            <td style="text-align: right; padding-right: 20px;">
+                                <button class="btn-small" onclick="window.location.href='prontuario.html'">Ver PEP</button>
+                            </td>
+                        </tr>
+
+                        <tr style="border-bottom: 1px solid #eee;">
+                            <td style="padding: 15px 20px;">
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <div class="avatar-mini" style="background: #004d40;">JS</div>
+                                    <div>
+                                        <strong>João da Silva</strong>
+                                        <small style="display: block; color: #888;">CPF: 987.654.321-11</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>(11) 98888-2222</td>
+                            <td>Convênio A</td>
+                            <td><span class="status-badge processing">Ativo</span></td>
+                            <td style="text-align: right; padding-right: 20px;">
+                                <button class="btn-small" onclick="window.location.href='prontuario.html'">Ver PEP</button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </main>
+    </div>
+
+    <div id="newPatientModal" class="modal-overlay hidden">
+        <div class="modal-content" style="max-width: 500px;">
+            <header class="modal-header">
+                <h3>Cadastrar Novo Paciente</h3>
+                <span class="close-modal" onclick="closeNewPatientModal()">&times;</span>
+            </header>
+            
+            <form id="newPatientForm">
+                <div class="modal-body">
+                    <div class="detail-group">
+                        <label class="label-bold">Nome Completo</label>
+                        <input type="text" id="npName" required placeholder="Ex: Carlos Souza">
+                    </div>
+                    
+                    <div class="form-grid" style="margin-bottom: 15px;">
+                        <div>
+                            <label class="label-bold">CPF</label>
+                            <input type="text" id="npCpf" required placeholder="000.000.000-00">
+                        </div>
+                        <div>
+                            <label class="label-bold">Telefone</label>
+                            <input type="tel" id="npPhone" required placeholder="(00) 00000-0000">
+                        </div>
+                    </div>
+
+                    <div class="form-grid" style="margin-bottom: 0;">
+                        <div>
+                            <label class="label-bold">Convênio</label>
+                            <select id="npInsurance">
+                                <option value="Particular">Particular</option>
+                                <option value="Unimed">Unimed</option>
+                                <option value="Bradesco">Bradesco</option>
+                                <option value="Sus">SUS</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="label-bold">Status</label>
+                            <select id="npStatus">
+                                <option value="Ativo">Ativo</option>
+                                <option value="Inativo">Inativo</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="modal-footer">
+                    <button type="button" class="btn-secondary" onclick="closeNewPatientModal()">Cancelar</button>
+                    <button type="submit" class="btn-primary">Cadastrar</button>
+                </footer>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // --- FUNÇÕES DO MODAL ---
+        const modal = document.getElementById('newPatientModal');
+
+        function openNewPatientModal() {
+            modal.classList.remove('hidden');
+            setTimeout(() => modal.classList.add('open'), 10);
+            document.getElementById('npName').focus();
+        }
+
+        function closeNewPatientModal() {
+            modal.classList.remove('open');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+
+        // Fechar ao clicar fora
+        window.onclick = function(event) {
+            if (event.target == modal) closeNewPatientModal();
+        }
+
+        // --- LÓGICA DE CADASTRO (Adicionar na Tabela) ---
+        document.getElementById('newPatientForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // 1. Captura os dados
+            const name = document.getElementById('npName').value;
+            const cpf = document.getElementById('npCpf').value;
+            const phone = document.getElementById('npPhone').value;
+            const insurance = document.getElementById('npInsurance').value;
+            
+            // 2. Cria as Iniciais para o Avatar
+            const initials = name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+            
+            // 3. Cria a nova linha HTML
+            const newRow = `
+                <tr style="border-bottom: 1px solid #eee; animation: fadeIn 0.5s;">
+                    <td style="padding: 15px 20px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div class="avatar-mini" style="background: var(--accent-color);">${initials}</div>
+                            <div>
+                                <strong>${name}</strong>
+                                <small style="display: block; color: #888;">CPF: ${cpf}</small>
+                            </div>
+                        </div>
+                    </td>
+                    <td>${phone}</td>
+                    <td>${insurance}</td>
+                    <td><span class="status-badge processing">Novo</span></td>
+                    <td style="text-align: right; padding-right: 20px;">
+                        <button class="btn-small" onclick="window.location.href='prontuario.html'">Ver PEP</button>
+                    </td>
+                </tr>
+            `;
+
+            // 4. Adiciona ao topo da tabela
+            const tbody = document.querySelector('#patientsTable tbody');
+            tbody.insertAdjacentHTML('afterbegin', newRow);
+
+            // 5. Finaliza
+            alert(`Paciente ${name} cadastrado com sucesso!`);
+            this.reset(); // Limpa formulário
+            closeNewPatientModal();
+        });
+    </script>
+</body>
+</html>

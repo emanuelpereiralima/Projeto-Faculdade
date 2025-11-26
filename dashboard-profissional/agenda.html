@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda Médica - VidaPlus</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/doctor.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar doctor-theme">
+            <div class="sidebar-header">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h2>VidaPlus <span class="highlight">Pro</span></h2>
+                </a>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="index.html"><span class="material-icons">dashboard</span> Visão Geral</a></li>
+                    <li><a href="#" class="active"><span class="material-icons">calendar_today</span> Minha Agenda</a></li>
+                    <li><a href="pacientes.html"><span class="material-icons">people</span> Meus Pacientes</a></li>
+                    <li><a href="prontuario.html"><span class="material-icons">assignment</span> Prontuário (PEP)</a></li>
+                    <li class="logout-item"><a href="../index.html"><span class="material-icons">logout</span> Sair</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="page-title">
+                    <h1>Gestão de Agenda</h1>
+                    <p>Gerencie seus horários e atendimentos do dia.</p>
+                </div>
+                <div class="user-avatar">
+                    <button class="btn-primary" onclick="alert('Funcionalidade: Criar bloqueio na agenda')">
+                        <span class="material-icons">block</span> Bloquear Horário
+                    </button>
+                </div>
+            </header>
+
+            <section class="agenda-layout">
+                
+                <div class="calendar-sidebar">
+                    <h3 style="margin-bottom: 20px;">Novembro 2025</h3>
+                    <input type="date" class="styled-date-input" value="2025-11-25" style="margin-bottom: 20px;">
+                    
+                    <div class="detail-group">
+                        <strong>Filtrar por Status:</strong>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
+                            <label><input type="checkbox" checked> Confirmados (Verde)</label>
+                            <label><input type="checkbox" checked> Telemedicina (Azul)</label>
+                            <label><input type="checkbox" checked> Pendentes (Amarelo)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="schedule-list">
+                    
+                    <div class="schedule-item confirmed">
+                        <div class="time-box">08:00</div>
+                        <div class="patient-info">
+                            <h4>Maria Oliveira</h4>
+                            <p>Primeira Consulta • Particular</p>
+                        </div>
+                        <div class="schedule-actions">
+                            <span class="status-badge completed">Confirmado</span>
+                            <button class="btn-secondary">Ver Ficha</button>
+                        </div>
+                    </div>
+
+                    <div class="schedule-item telemed">
+                        <div class="time-box">09:00</div>
+                        <div class="patient-info">
+                            <h4 style="display: flex; align-items: center; gap: 5px;">
+                                João da Silva <span class="material-icons" style="font-size: 1rem; color: #17a2b8;">videocam</span>
+                            </h4>
+                            <p>Retorno • Convênio A</p>
+                        </div>
+                        <div class="schedule-actions">
+                            <button class="btn-primary" onclick="window.location.href='../dashboard-paciente/telemedicina.html'">Entrar na Sala</button>
+                        </div>
+                    </div>
+
+                    <div class="schedule-item pending">
+                        <div class="time-box">10:00</div>
+                        <div class="patient-info">
+                            <h4>Roberto Santos</h4>
+                            <p>Check-up • Particular</p>
+                        </div>
+                        <div class="schedule-actions">
+                            <span class="status-badge processing">Aguardando Confirmação</span>
+                            <button class="btn-small">Confirmar</button>
+                        </div>
+                    </div>
+
+                    <div class="schedule-item blocked">
+                        <div class="time-box">11:00</div>
+                        <div class="patient-info">
+                            <h4 style="color: #dc3545;">Horário Bloqueado</h4>
+                            <p>Reunião Administrativa</p>
+                        </div>
+                        <div class="schedule-actions">
+                            <button class="btn-text">Desbloquear</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>

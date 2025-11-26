@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Consulta - VidaPlus</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>VidaPlus <span class="highlight">+</span></h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="index.html"><span class="material-icons">dashboard</span> Início</a></li>
+                    <li><a href="agendamento.html" class="active"><span class="material-icons">event</span> Agendar Consulta</a></li> 
+                    <li><a href="telemedicina.html"><span class="material-icons">video_camera_front</span> Telemedicina</a></li>
+                    <li><a href="historico.html"><span class="material-icons">history</span> Histórico</a></li>
+                    <li><a href="meu-perfil.html"><span class="material-icons">person</span> Meu Perfil</a></li>
+                    <li class="logout-item"><a href="../index.html"><span class="material-icons">logout</span> Sair</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="page-title">
+                    <h1>Nova Consulta</h1>
+                    <p>Siga os passos para agendar seu atendimento.</p>
+                </div>
+                <div class="user-avatar">
+                    <span class="material-icons">account_circle</span>
+                </div>
+            </header>
+
+            <section class="wizard-container">
+                <div class="progress-bar">
+                    <div class="step active" id="step-indicator-1">1. Especialidade</div>
+                    <div class="line"></div>
+                    <div class="step" id="step-indicator-2">2. Profissional</div>
+                    <div class="line"></div>
+                    <div class="step" id="step-indicator-3">3. Data e Hora</div>
+                </div>
+
+                <form id="agendamentoForm">
+                    
+                    <div class="form-step active" id="step-1">
+                        <h3>Qual a especialidade necessária?</h3>
+                        <div class="options-grid">
+                            <label class="option-card">
+                                <input type="radio" name="especialidade" value="cardiologia" checked>
+                                <span class="material-icons">favorite</span>
+                                <span>Cardiologia</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="especialidade" value="clinica">
+                                <span class="material-icons">medical_services</span>
+                                <span>Clínica Geral</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="especialidade" value="dermatologia">
+                                <span class="material-icons">spa</span>
+                                <span>Dermatologia</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="especialidade" value="pediatria">
+                                <span class="material-icons">child_care</span>
+                                <span>Pediatria</span>
+                            </label>
+                        </div>
+                        <div class="step-actions right">
+                            <button type="button" class="btn-primary" onclick="nextStep(2)">Próximo</button>
+                        </div>
+                    </div>
+
+                    <div class="form-step" id="step-2">
+                        <h3>Escolha o profissional</h3>
+                        <div class="options-list">
+                            <label class="doctor-option">
+                                <input type="radio" name="medico" value="dr_ana" checked>
+                                <div class="doc-info">
+                                    <strong>Dr.ª Ana Sousa</strong>
+                                    <small>CRM 12345 - Disponível Manhã/Tarde</small>
+                                </div>
+                            </label>
+                            <label class="doctor-option">
+                                <input type="radio" name="medico" value="dr_carlos">
+                                <div class="doc-info">
+                                    <strong>Dr. Carlos Lima</strong>
+                                    <small>CRM 98765 - Disponível Tarde/Noite</small>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="step-actions">
+                            <button type="button" class="btn-secondary" onclick="prevStep(1)">Voltar</button>
+                            <button type="button" class="btn-primary" onclick="nextStep(3)">Próximo</button>
+                        </div>
+                    </div>
+
+                    <div class="form-step" id="step-3">
+<h3>Quando deseja ser atendido?</h3>
+
+<div class="datetime-container">
+    <div class="date-section">
+        <label class="section-label">Selecione a Data:</label>
+        <input type="date" id="dateInput" class="styled-date-input" required>
+    </div>
+
+    <div class="time-section">
+        <label class="section-label">Horários Disponíveis:</label>
+        
+        <div class="period-group">
+            <span class="period-label"><span class="material-icons">wb_sunny</span> Manhã</span>
+            <div class="slots-grid">
+                
+                <label class="time-slot">
+                    <input type="radio" name="horario" value="08:00">
+                    <span>08:00</span>
+                </label>
+
+                <label class="time-slot">
+                    <input type="radio" name="horario" value="09:00">
+                    <span>09:00</span>
+                </label>
+                
+                <label class="time-slot disabled" title="Horário Indisponível">
+                    <input type="radio" name="horario" value="10:00" disabled>
+                    <span>10:00</span>
+                </label>
+
+                <label class="time-slot">
+                    <input type="radio" name="horario" value="11:30">
+                    <span>11:30</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="period-group">
+            <span class="period-label"><span class="material-icons">wb_twilight</span> Tarde</span>
+            <div class="slots-grid">
+                <label class="time-slot">
+                    <input type="radio" name="horario" value="14:00">
+                    <span>14:00</span>
+                </label>
+
+                <label class="time-slot">
+                    <input type="radio" name="horario" value="15:30">
+                    <span>15:30</span>
+                </label>
+
+                <label class="time-slot">
+                    <input type="radio" name="horario" value="16:45">
+                    <span>16:45</span>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+                        <div class="step-actions">
+                            <button type="button" class="btn-secondary" onclick="prevStep(2)">Voltar</button>
+                            <button type="submit" class="btn-primary">Confirmar Agendamento</button>
+                        </div>
+                    </div>
+
+                </form>
+            </section>
+        </main>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        // --- 1. Configuração do Input de Data ---
+        const dateInput = document.getElementById('dateInput');
+        
+        // Função para pegar a data de hoje no formato AAAA-MM-DD (Local)
+        // Usamos isso para evitar problemas de fuso horário do toISOString()
+        const hoje = new Date();
+        const ano = hoje.getFullYear();
+        const mes = String(hoje.getMonth() + 1).padStart(2, '0');
+        const dia = String(hoje.getDate()).padStart(2, '0');
+        const dataMinima = `${ano}-${mes}-${dia}`;
+
+        // Aplica o bloqueio de datas passadas no calendário
+        dateInput.min = dataMinima;
+
+        // --- 2. Lista de Datas Bloqueadas (Ex: Feriados ou dias sem médico) ---
+        // Formato: 'AAAA-MM-DD'
+        const datasBloqueadas = [
+            '2023-12-25', // Natal
+            '2024-01-01', // Ano Novo
+            '2024-11-15', // Proclamação da República
+            '2024-12-25'  // Natal próximo
+        ];
+
+        // --- 3. Validação ao Selecionar ---
+        dateInput.addEventListener('input', function() {
+            const dataSelecionada = new Date(this.value);
+            const diaSemana = dataSelecionada.getUTCDay(); // 0 = Domingo, 6 = Sábado
+            
+            let erro = "";
+
+            // Verificação A: Data Bloqueada Específica
+            if (datasBloqueadas.includes(this.value)) {
+                erro = "🚫 Esta data não está disponível para atendimento (Feriado/Lotado).";
+            }
+            
+            // Verificação B: Finais de Semana (Opcional - Hospitais costumam ter plantão, mas clínicas não)
+            // Descomente as linhas abaixo se quiser bloquear Sábado e Domingo
+            /*
+            else if (diaSemana === 0 || diaSemana === 6) {
+                erro = "🚫 Atendimentos eletivos apenas de Segunda a Sexta.";
+            }
+            */
+
+            // Se houver erro, avisa e limpa o campo
+            if (erro) {
+                alert(erro);
+                this.value = ''; // Reseta o campo para vazio
+                this.classList.add('input-error'); // Adiciona classe visual de erro (veja CSS abaixo)
+            } else {
+                this.classList.remove('input-error');
+            }
+        });
+
+        // --- Lógica do Wizard (Mantida) ---
+        window.nextStep = function(stepNumber) {
+            // Validação simples antes de avançar do passo 3
+            if(stepNumber === 3 && !dateInput.value && document.getElementById('step-3').classList.contains('active')){
+               // Se estiver tentando confirmar sem data
+               // (O required do HTML já segura, mas é bom garantir)
+            }
+
+            document.querySelectorAll('.form-step').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById(`step-${stepNumber}`).classList.add('active');
+            
+            for(let i=1; i<=stepNumber; i++) {
+                document.getElementById(`step-indicator-${i}`).classList.add('active');
+            }
+        }
+
+        window.prevStep = function(stepNumber) {
+            document.querySelectorAll('.form-step').forEach(el => el.classList.remove('active'));
+            document.getElementById(`step-${stepNumber}`).classList.add('active');
+            document.getElementById(`step-indicator-${stepNumber + 1}`).classList.remove('active');
+        }
+
+        // Simulação de Envio
+        document.getElementById('agendamentoForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Validação Final
+            if(!dateInput.value) {
+                alert("Por favor, selecione uma data válida.");
+                return;
+            }
+
+            alert("✅ Agendamento realizado com sucesso!\nVocê receberá um e-mail com os detalhes.");
+            window.location.href = "index.html"; 
+        });
+    });
+</script>
+</body>
+</html>

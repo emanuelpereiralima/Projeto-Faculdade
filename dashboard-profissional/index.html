@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal do Médico - VidaPlus</title>
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/doctor.css"> </head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar doctor-theme">
+            <div class="sidebar-header">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h2>VidaPlus <span class="highlight">Pro</span></h2>
+                </a>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#" class="active"><span class="material-icons">dashboard</span> Visão Geral</a></li>
+                    <li><a href="agenda.html"><span class="material-icons">calendar_today</span> Minha Agenda</a></li>
+                    <li><a href="pacientes.html"><span class="material-icons">people</span> Meus Pacientes</a></li>
+                    <li><a href="prontuario.html"><span class="material-icons">assignment</span> Prontuário (PEP)</a></li>
+                    <li class="logout-item"><a href="../index.html"><span class="material-icons">logout</span> Sair</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="welcome-text">
+                    <h1>Olá, Dr.ª Ana Sousa</h1>
+                    <p>Você tem <strong>4 consultas</strong> agendadas para hoje.</p>
+                </div>
+                <div class="user-avatar">
+                    <img src="https://img.freepik.com/fotos-gratis/medico-oferecendo-uma-consulta-medica-virtual_23-2149365516.jpg" alt="Dra Ana" style="width:40px; height:40px; border-radius:50%; object-fit:cover; border: 2px solid #004d40;">
+                </div>
+            </header>
+
+            <section class="stats-grid" style="margin-bottom: 30px;">
+                
+                <div class="card">
+                    <h3>Pacientes Hoje</h3>
+                    <div class="flex-center" style="height: 80px; font-size: 2.5rem; font-weight: bold; color: #004d40;">
+                        12
+                    </div>
+                    <p class="text-center" style="font-size: 0.9rem; color: #888;">4 finalizados / 8 restantes</p>
+                </div>
+
+                <div class="card highlight-card">
+                    <h3>Em Atendimento Agora</h3>
+                    <div style="margin-top: 10px;">
+                        <p style="font-size: 1.2rem; font-weight: bold; color: #333;">João da Silva</p>
+                        <p style="color: #666; margin-bottom: 15px;">Retorno - Cardiologia</p>
+                        
+                        <div style="display: flex; gap: 10px;">
+                            <button class="btn-primary" style="flex:1;" onclick="window.location.href='prontuario.html'">
+                                Abrir Prontuário
+                            </button>
+                            
+                            <button class="btn-secondary" style="flex:1;" onclick="if(confirm('Tem certeza que deseja finalizar este atendimento?')) alert('Atendimento encerrado com sucesso!');">
+                                Finalizar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Avisos Administrativos</h3>
+                    <ul style="list-style: none; font-size: 0.9rem; margin-top: 10px; padding: 0;">
+                        <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                            <span class="material-icons" style="font-size: 1rem; color: #004d40;">campaign</span> 
+                            Reunião clínica às 16h.
+                        </li>
+                        <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                            <span class="material-icons" style="font-size: 1rem; color: #d32f2f;">warning</span> 
+                            Manutenção no sistema (Dom).
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h3 class="section-title">Agenda do Dia</h3>
+                <div class="card" style="padding: 0; overflow: hidden;">
+                    
+                    <div class="patient-queue-item">
+                        <div style="display: flex; align-items: center;">
+                            <span class="queue-time">09:00</span>
+                            <div class="queue-info">
+                                <h4>Maria Oliveira</h4>
+                                <p>Primeira Consulta • Particular</p>
+                            </div>
+                        </div>
+                        <div class="queue-actions">
+                            <span class="status-badge completed">Finalizado</span>
+                        </div>
+                    </div>
+
+                    <div class="patient-queue-item" style="background-color: #f0f8ff;">
+                        <div style="display: flex; align-items: center;">
+                            <span class="queue-time">09:30</span>
+                            <div class="queue-info">
+                                <h4>João da Silva (Atual)</h4>
+                                <p>Retorno • Convênio A</p>
+                            </div>
+                        </div>
+                        <div class="queue-actions">
+                            <span class="status-badge processing">Em Andamento</span>
+                        </div>
+                    </div>
+
+                    <div class="patient-queue-item">
+                        <div style="display: flex; align-items: center;">
+                            <span class="queue-time">10:00</span>
+                            <div class="queue-info">
+                                <h4 style="display: flex; align-items: center; gap: 5px;">
+                                    Pedro Santos 
+                                    <span class="material-icons" style="font-size: 1rem; color: #17a2b8;" title="Telemedicina">videocam</span>
+                                </h4>
+                                <p>Telemedicina • Convênio B</p>
+                            </div>
+                        </div>
+                        <div class="queue-actions">
+                            <button class="btn-small" onclick="window.location.href='telemedicina-medico.html'">
+                                <span class="material-icons" style="font-size:1rem; vertical-align:middle; margin-right: 4px;">play_arrow</span> 
+                                Iniciar
+                            </button>
+                            
+                            <button class="btn-small" onclick="window.location.href='prontuario.html'">
+                                Ver Ficha
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="patient-queue-item">
+                        <div style="display: flex; align-items: center;">
+                            <span class="queue-time">10:30</span>
+                            <div class="queue-info">
+                                <h4>Ana Beatriz</h4>
+                                <p>Rotina • Particular</p>
+                            </div>
+                        </div>
+                        <div class="queue-actions">
+                            <span class="status" style="background:#eee; color:#666;">Aguardando</span>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>

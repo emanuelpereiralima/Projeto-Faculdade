@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PEP - Prontuário Eletrônico</title>
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/doctor.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar doctor-theme">
+            <div class="sidebar-header">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h2>VidaPlus <span class="highlight">Pro</span></h2>
+                </a>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="index.html"><span class="material-icons">dashboard</span> Visão Geral</a></li>
+                    <li><a href="agenda.html"><span class="material-icons">calendar_today</span> Minha Agenda</a></li>
+                    <li><a href="pacientes.html"><span class="material-icons">people</span> Meus Pacientes</a></li>
+                    <li><a href="#" class="active"><span class="material-icons">assignment</span> Prontuário (PEP)</a></li>
+                    <li class="logout-item"><a href="../index.html"><span class="material-icons">logout</span> Sair</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            
+            <div class="card search-patient-card">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <span class="material-icons" style="color: #004d40;">assignment_ind</span>
+                    <h2 style="font-size: 1.2rem; color: #333; margin: 0;">Prontuário Ativo</h2>
+                </div>
+                <button class="btn-secondary" onclick="openPatientModal()">
+                    <span class="material-icons" style="font-size: 1rem; margin-right: 5px;">swap_horiz</span>
+                    Trocar Paciente
+                </button>
+            </div>
+
+            <section class="patient-header-card">
+                <div class="patient-profile-main">
+                    <div class="patient-avatar">
+                        <span class="material-icons">person</span>
+                    </div>
+                    <div class="patient-info-text">
+                        <h2 id="pName">João da Silva</h2>
+                        <p id="pDetails">42 anos • Masculino • Convênio A</p>
+                        <div class="tags-row">
+                            <span class="tag alert" id="pAllergy">⚠️ Alérgico: Dipirona</span>
+                            <span class="tag info">Última consulta: 10/10/2025</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="divider-vertical"></div>
+                <div class="vitals-grid">
+                <div class="vital-item">
+                    <span class="material-symbols-outlined vitals-icon">favorite</span>
+                    <div>
+                        <strong>120/80</strong>
+                        <span>PA (mmHg)</span>
+                    </div>
+                </div>
+                <div class="vital-item">
+                    <span class="material-symbols-outlined vitals-icon">monitor_heart</span>
+                    <div>
+                        <strong>78</strong>
+                        <span>BPM</span>
+                    </div>
+                </div>
+                <div class="vital-item">
+                    <span class="material-symbols-outlined vitals-icon">thermostat</span>
+                    <div>
+                        <strong>36.5°</strong>
+                        <span>Temp</span>
+                    </div>
+                </div>
+                <div class="vital-item">
+                    <span class="material-symbols-outlined vitals-icon">monitor_weight</span>
+                    <div>
+                        <strong>92kg</strong>
+                        <span>Peso</span>
+                    </div>
+                </div>
+            </div>
+            </section>
+            <div class="card pep-workspace">
+                <div class="tabs-header">
+                    <button class="tab-btn active" onclick="openPepTab('evolucao')">
+                        <span class="material-icons">edit_note</span> Evolução
+                    </button>
+                    <button class="tab-btn" onclick="openPepTab('receita')">
+                        <span class="material-icons">medication</span> Prescrição
+                    </button>
+                    <button class="tab-btn" onclick="openPepTab('historico')">
+                        <span class="material-icons">history</span> Histórico
+                    </button>
+                </div>
+
+                <div id="evolucao" class="tab-content active">
+                    <form id="evolutionForm">
+                        <div class="detail-group">
+                            <label class="label-bold">Registro Clínico (SOAP):</label>
+                            <textarea class="clinical-input" placeholder="Subjetivo, Objetivo, Avaliação e Plano..."></textarea>
+                        </div>
+                        <div class="detail-group">
+                            <label class="label-bold">CID-10 Principal:</label>
+                            <input type="text" placeholder="Ex: I10 - Hipertensão essencial" class="input-cid">
+                        </div>
+                        <div class="form-actions-profile">
+                            <button type="submit" class="btn-primary">Salvar Evolução</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="receita" class="tab-content">
+                    <div class="add-medication-box">
+                        <strong>💊 Adicionar Medicamento</strong>
+                        <div class="med-inputs">
+                            <input type="text" id="medName" placeholder="Nome do fármaco" style="flex: 2;">
+                            <input type="text" id="medDosage" placeholder="Posologia" style="flex: 2;">
+                            <button class="btn-small" type="button" onclick="addMedication()">Adicionar</button>
+                        </div>
+                    </div>
+                    <div class="med-table-container">
+                        <table class="med-table" id="prescriptionTable">
+                            <thead>
+                                <tr>
+                                    <th>Medicamento</th>
+                                    <th>Posologia</th>
+                                    <th style="width: 50px;">Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <div class="form-actions-profile">
+                        <button class="btn-secondary">Imprimir</button>
+                        <button class="btn-primary" onclick="alert('Receita enviada!')">Assinar e Enviar</button>
+                    </div>
+                </div>
+
+                <div id="historico" class="tab-content">
+                    <div class="history-list">
+                        <div class="history-card">
+                            <div class="date-box"><span class="day">10</span><span class="month">OUT</span></div>
+                            <div class="info-box"><strong>Consulta de Rotina</strong><p>Dr.ª Ana Sousa</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="patientSearchModal" class="modal-overlay hidden">
+        <div class="modal-content" style="max-width: 600px;">
+            <header class="modal-header">
+                <h3>Selecionar Paciente</h3>
+                <span class="close-modal" onclick="closePatientModal()">&times;</span>
+            </header>
+            <div class="modal-body">
+                <div class="search-box" style="margin-bottom: 20px; background: #f1f3f4;">
+                    <span class="material-icons">search</span>
+                    <input type="text" id="modalSearchInput" placeholder="Buscar por nome ou CPF...">
+                </div>
+                <div class="patient-list-select">
+                    <div class="patient-item-select" onclick="selectPatient('Maria Oliveira', '29 anos • Fem • Particular', 'Nenhuma')">
+                        <div class="avatar-mini">MO</div>
+                        <div><strong>Maria Oliveira</strong><p>CPF: 123.456.789-00</p></div>
+                    </div>
+                    <div class="patient-item-select" onclick="selectPatient('Pedro Santos', '65 anos • Masc • Convênio B', 'Penicilina')">
+                        <div class="avatar-mini" style="background:#ffc107; color:#333;">PS</div>
+                        <div><strong>Pedro Santos</strong><p>CPF: 987.654.321-11</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/doctor-prontuario.js"></script>
+</body>
+</html>

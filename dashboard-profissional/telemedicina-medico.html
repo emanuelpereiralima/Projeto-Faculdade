@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teleconsulta - Dr.ª Ana</title>
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/doctor.css"> </head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar doctor-theme">
+            <div class="sidebar-header">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h2>VidaPlus <span class="highlight">Pro</span></h2>
+                </a>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="index.html"><span class="material-icons">dashboard</span> Visão Geral</a></li>
+                    <li><a href="agenda.html"><span class="material-icons">calendar_today</span> Minha Agenda</a></li>
+                    <li><a href="#" class="active"><span class="material-icons">video_camera_front</span> Telemedicina</a></li>
+                    <li><a href="prontuario.html"><span class="material-icons">assignment</span> Prontuário (PEP)</a></li>
+                    <li class="logout-item"><a href="../index.html"><span class="material-icons">logout</span> Sair</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content telemed-content">
+            
+            <section id="lobby-screen" class="lobby-container">
+                <div class="lobby-card">
+                    <div class="icon-pulse">
+                        <span class="material-icons">video_camera_front</span>
+                    </div>
+                    <h2 style="color: #004d40;">Sala de Atendimento</h2>
+                    <p>Paciente: <strong>Pedro Santos</strong><br>Horário: 10:00 - Telemedicina</p>
+                    
+                    <div class="device-check">
+                        <div class="check-item ready">
+                            <span class="material-icons">mic</span> Microfone Ativo
+                        </div>
+                        <div class="check-item ready">
+                            <span class="material-icons">videocam</span> Webcam Pronta
+                        </div>
+                        <div class="check-item ready">
+                            <span class="material-icons">cloud_done</span> Prontuário Carregado
+                        </div>
+                    </div>
+
+                    <button class="btn-primary btn-lg" onclick="startDoctorCall()">
+                        <span class="material-icons">play_circle</span> Iniciar Atendimento
+                    </button>
+                </div>
+            </section>
+
+            <section id="video-room" class="video-room hidden">
+                
+                <div class="video-grid">
+                    <div class="main-video-container">
+                        <img src="https://img.freepik.com/free-photo/senior-man-using-laptop-home_23-2148793461.jpg" alt="Paciente Pedro" class="doctor-video">
+                        
+                        <div class="participant-label">
+                            <span class="status-dot"></span> Pedro Santos (Paciente)
+                        </div>
+
+                        <div class="self-video-container">
+                            <video id="localVideo" autoplay muted playsinline></video>
+                            <span class="me-label">Dr.ª Ana (Eu)</span>
+                        </div>
+                    </div>
+
+                    <div class="chat-sidebar">
+                        <div class="chat-header" style="background: #e0f2f1; display:flex; justify-content:space-between; align-items:center;">
+                            <strong>Pedro Santos</strong>
+                            <button class="btn-small" onclick="window.open('prontuario.html', '_blank')">Abrir PEP</button>
+                        </div>
+                        <div class="chat-messages" id="chatMessages">
+                            <div class="msg received">
+                                <p>Bom dia, doutora. Já estou online.</p>
+                                <span class="time">10:01</span>
+                            </div>
+                        </div>
+                        <div class="chat-input-area">
+                            <input type="text" id="chatInput" placeholder="Mensagem ou orientação...">
+                            <button onclick="sendDoctorMessage()"><span class="material-icons">send</span></button>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="call-controls">
+                    <button class="control-btn" id="btnMic" onclick="toggleMic()" title="Mutar">
+                        <span class="material-icons">mic</span>
+                    </button>
+                    <button class="control-btn" id="btnCam" onclick="toggleCam()" title="Parar Vídeo">
+                        <span class="material-icons">videocam</span>
+                    </button>
+                    <button class="control-btn end-call" onclick="endDoctorCall()" title="Encerrar Consulta">
+                        <span class="material-icons">call_end</span>
+                    </button>
+                </footer>
+
+            </section>
+
+        </main>
+    </div>
+
+    <script src="../assets/js/doctor-telemed.js"></script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - VidaPlus</title>
+    
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/admin.css"> <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar admin-theme">
+            <div class="sidebar-header">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h2>VidaPlus <span class="highlight" style="color: #e74c3c;">Admin</span></h2>
+                </a>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="index.html" class="active"><span class="material-icons">analytics</span> Dashboard</a></li>
+                    <li><a href="profissionais.html"><span class="material-icons">medication_liquid</span> Profissionais</a></li>
+                    <li><a href="pacientes-admin.html"><span class="material-icons">groups</span> Pacientes</a></li>
+                    <li><a href="financeiro.html"><span class="material-icons">attach_money</span> Financeiro</a></li>
+                    <li class="logout-item"><a href="../index.html"><span class="material-icons">logout</span> Sair</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="page-title">
+                    <h1>Painel de Controle</h1>
+                    <p>Visão geral da operação hospitalar.</p>
+                </div>
+                <div class="user-avatar flex-center" style="background: #e74c3c; color: white; width: 40px; height: 40px; border-radius: 50%;">
+                    <span class="material-icons">admin_panel_settings</span>
+                </div>
+            </header>
+
+            <section class="kpi-grid">
+                <div class="kpi-card blue">
+                    <div class="kpi-info">
+                        <h3>128</h3>
+                        <p>Consultas Hoje</p>
+                    </div>
+                    <span class="material-icons kpi-icon" style="color: #3498db;">event_available</span>
+                </div>
+
+                <div class="kpi-card green">
+                    <div class="kpi-info">
+                        <h3>R$ 45k</h3>
+                        <p>Faturamento Dia</p>
+                    </div>
+                    <span class="material-icons kpi-icon" style="color: #27ae60;">payments</span>
+                </div>
+
+                <div class="kpi-card orange">
+                    <div class="kpi-info">
+                        <h3>85%</h3>
+                        <p>Ocupação Leitos</p>
+                    </div>
+                    <span class="material-icons kpi-icon" style="color: #f39c12;">bed</span>
+                </div>
+
+                <div class="kpi-card red">
+                    <div class="kpi-info">
+                        <h3>12</h3>
+                        <p>Alertas Pendentes</p>
+                    </div>
+                    <span class="material-icons kpi-icon" style="color: #e74c3c;">warning</span>
+                </div>
+            </section>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                
+                <div class="card">
+                    <h3>Volume de Atendimentos (Semanal)</h3>
+                    
+                    <div class="chart-container">
+                        <div class="bar-group">
+                            <div class="bar" style="height: 40%;"><span>40</span></div>
+                            <div class="bar-label">Seg</div>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 65%;"><span>65</span></div>
+                            <div class="bar-label">Ter</div>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 80%; background-color: #2980b9;"><span>80</span></div>
+                            <div class="bar-label">Qua</div>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 55%;"><span>55</span></div>
+                            <div class="bar-label">Qui</div>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 90%;"><span>90</span></div>
+                            <div class="bar-label">Sex</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="flex-between" style="margin-bottom: 15px;">
+                        <h3>Auditoria Recente</h3>
+                        <button class="btn-text">Ver Tudo</button>
+                    </div>
+                    
+                    <table class="log-table">
+                        <thead>
+                            <tr>
+                                <th>Usuário</th>
+                                <th>Ação</th>
+                                <th>Data/Hora</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="log-user">Dr. Ana Sousa</td>
+                                <td><span class="log-action create">CRIAR</span> Prontuário #992</td>
+                                <td>Hoje, 10:42</td>
+                            </tr>
+                            <tr>
+                                <td class="log-user">Admin Geral</td>
+                                <td><span class="log-action update">EDITAR</span> Perfil Dr. Carlos</td>
+                                <td>Hoje, 09:15</td>
+                            </tr>
+                            <tr>
+                                <td class="log-user">Recepção</td>
+                                <td><span class="log-action create">AGENDAR</span> Paciente Novo</td>
+                                <td>Hoje, 08:30</td>
+                            </tr>
+                            <tr>
+                                <td class="log-user">Sistema</td>
+                                <td><span class="log-action delete">DELETAR</span> Cache Temp</td>
+                                <td>Ontem, 23:59</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+</body>
+</html>

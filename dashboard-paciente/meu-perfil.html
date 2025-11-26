@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil - VidaPlus</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h2>VidaPlus <span class="highlight">+</span></h2>
+                </a>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="index.html"><span class="material-icons">dashboard</span> Início</a></li>
+                    <li><a href="agendamento.html"><span class="material-icons">event</span> Agendar Consulta</a></li>
+                    <li><a href="telemedicina.html"><span class="material-icons">video_camera_front</span> Telemedicina</a></li>
+                    <li><a href="historico.html"><span class="material-icons">history</span> Histórico</a></li>
+                    <li><a href="meu-perfil.html" class="active"><span class="material-icons">person</span> O Meu Perfil</a></li> <li class="logout-item"><a href="../index.html"><span class="material-icons">logout</span> Sair</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="page-title">
+                    <h1>Meu Perfil</h1>
+                    <p>Gerencie seus dados pessoais e clínicos.</p>
+                </div>
+            </header>
+
+            <section class="profile-container">
+                <form id="profileForm">
+                    
+                    <div class="profile-header">
+                        <div class="avatar-wrapper">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" id="profileImage" alt="Foto de Perfil">
+                            
+                            <label for="uploadPhoto" class="camera-icon" title="Alterar Foto">
+                                <span class="material-icons">photo_camera</span>
+                            </label>
+                            <input type="file" id="uploadPhoto" accept="image/*" style="display: none;">
+                        </div>
+                        <div class="profile-intro">
+                            <h2 id="displayName">João Silva</h2>
+                            <p>Paciente • <span class="tag">Plano Premium</span></p>
+                        </div>
+                    </div>
+
+                    <hr class="divider">
+
+                    <h3 class="section-title">Dados Pessoais</h3>
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label>Nome Completo</label>
+                            <input type="text" value="João da Silva" id="inputName">
+                        </div>
+                        <div class="input-group">
+                            <label>CPF / NIF</label>
+                            <input type="text" value="123.456.789-00" disabled style="background: #eee; cursor: not-allowed;" title="Entre em contato para alterar">
+                        </div>
+                        <div class="input-group">
+                            <label>E-mail</label>
+                            <input type="email" value="joao.silva@email.com">
+                        </div>
+                        <div class="input-group">
+                            <label>Telefone / WhatsApp</label>
+                            <input type="tel" value="(11) 99999-8888">
+                        </div>
+                        <div class="input-group full-width">
+                            <label>Endereço</label>
+                            <input type="text" value="Rua das Flores, 123 - Centro, São Paulo/SP">
+                        </div>
+                    </div>
+
+                    <h3 class="section-title">Ficha Médica Rápida</h3>
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label>Tipo Sanguíneo</label>
+                            <select>
+                                <option value="A+">A+</option>
+                                <option value="O+" selected>O+</option>
+                                <option value="B+">B+</option>
+                                <option value="AB+">AB+</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>Alergias Conhecidas</label>
+                            <input type="text" value="Dipirona, Poeira" placeholder="Liste suas alergias">
+                        </div>
+                    </div>
+
+                    <div class="form-actions-profile">
+                        <button type="submit" class="btn-primary" id="saveBtn">Salvar Alterações</button>
+                    </div>
+
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script src="../assets/js/profile.js"></script>
+</body>
+</html>
