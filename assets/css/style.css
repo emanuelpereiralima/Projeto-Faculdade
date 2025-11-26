@@ -38,6 +38,39 @@ body {
     padding: 20px;
 }
 
+/* --- Botão Source Code (Canto Superior Esquerdo) --- */
+.source-code-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 9999;
+    
+    background-color: #24292e;
+    color: #ffffff;
+    text-decoration: none;
+    
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    font-family: 'Roboto', sans-serif;
+}
+.source-code-btn .material-icons {
+    font-size: 1.2rem;
+}
+.source-code-btn:hover {
+    background-color: #000000;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
 /* --- Container de Login --- */
 .login-container {
     width: 100%;
