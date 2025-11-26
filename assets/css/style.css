@@ -270,52 +270,111 @@ data-row {
     transform: scale(0.95);
 }
 
-/* Classe utilitária para quando copia (JavaScript vai adicionar) */
 .btn-copy.copied {
-    color: #28a745; /* Verde Sucesso */
+    color: #28a745;
 }
 
 @media (max-width: 768px) {
-    /* Transforma o Grid de 2 colunas em 1 coluna só */
+
     .dashboard-container {
         grid-template-columns: 1fr;
-        height: auto; /* Permite rolagem infinita no mobile */
+        height: auto;
     }
 
-    /* Ajusta a Sidebar para mobile (fica no topo ou escondida) */
     .sidebar {
-        display: none; /* Esconde menu lateral no mobile para simplificar */
-        /* Num projeto real, usaríamos um botão "hambúrguer" para abrir */
+        display: none;
     }
 
-    /* Ajusta o padding do conteúdo */
+
     .main-content {
         padding: 15px;
         height: auto;
     }
 
-    /* Ajusta os textos grandes */
+
     .top-bar h1 {
         font-size: 1.5rem;
     }
 
-    /* Ajusta o Wizard (Passo a Passo) */
+
     .wizard-container {
         padding: 15px;
     }
     
     .progress-bar .step {
-        font-size: 0.75rem; /* Texto menor na barra de progresso */
+        font-size: 0.75rem;
         padding: 0 5px;
     }
     
     .datetime-inputs {
-        flex-direction: column; /* Data e hora um embaixo do outro */
+        flex-direction: column;
     }
     
     .options-grid {
-        grid-template-columns: 1fr 1fr; /* 2 colunas em vez de 4 */
+        grid-template-columns: 1fr 1fr;
     }
+}
+
+/* ============================================================
+   1. VARIÁVEIS E TEMAS (LIGHT / DARK)
+   ============================================================ */
+:root {
+    /* Cores Fixas (Identidade da Marca - Não mudam) */
+    --primary-color: #0056b3;
+    --primary-hover: #004494;
+    --accent-color: #00c4cc;
+    
+    /* Cores Dinâmicas (Mudam com o tema) */
+    --bg-color: #f4f7f6;        /* Fundo da página */
+    --card-bg: #ffffff;         /* Fundo dos cards/containers */
+    --text-color: #333333;      /* Texto principal */
+    --text-light: #666666;      /* Texto secundário */
+    --border-color: #eeeeee;    /* Bordas */
+    --input-bg: #ffffff;        /* Fundo de inputs */
+    
+    /* Outros */
+    --border-radius: 8px;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* --- TEMA ESCURO (Sobrescreve as variáveis acima) --- */
+body.dark-mode {
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --text-color: #e0e0e0;
+    --text-light: #aaaaaa;
+    --border-color: #333333;
+    --input-bg: #2c2c2c;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Ajustes globais para usar as novas variáveis */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s; /* Transição suave */
+}
+
+/* Garante que cards e inputs usem as variáveis corretas */
+.card, .history-card, .wizard-container, .profile-container, .lobby-card, .modal-content {
+    background-color: var(--card-bg) !important; /* Força a cor do tema */
+    border-color: var(--border-color);
+}
+
+input, select, textarea {
+    background-color: var(--input-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* Ajuste específico para tabelas no modo escuro */
+body.dark-mode .med-table th, 
+body.dark-mode .data-table thead {
+    background-color: #333;
+    color: #fff;
+}
+body.dark-mode tr:hover {
+    background-color: #2c2c2c !important;
 }
 
 /* --- Melhoria na Seleção de Data e Hora --- */
